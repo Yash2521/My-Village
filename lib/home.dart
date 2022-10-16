@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
     }else if (currentPage == DrawerSections.update) {
       container = UpdatePage();
     }else if (currentPage == DrawerSections.setting) {
-      container = Setting();
+      container = SettingsPage();
     }
 
 
