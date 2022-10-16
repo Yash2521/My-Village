@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice/setting.dart';
 import 'expense.dart';
 import 'contacts.dart';
 import 'dashboard.dart';
@@ -50,6 +51,8 @@ class _HomePageState extends State<HomePage> {
       container = ComplainPage();
     }else if (currentPage == DrawerSections.update) {
       container = UpdatePage();
+    }else if (currentPage == DrawerSections.setting) {
+      container = Setting();
     }
 
 
@@ -99,6 +102,8 @@ class _HomePageState extends State<HomePage> {
               currentPage == DrawerSections.complain ? true : false),
           menuItem(8, "Update Details", Icons.update,
               currentPage == DrawerSections.update ? true : false),
+          menuItem(9, "Setting", Icons.settings,
+              currentPage == DrawerSections.setting ? true : false),
         ],
       ),
     );
@@ -127,6 +132,8 @@ class _HomePageState extends State<HomePage> {
               currentPage = DrawerSections.complain;
             }else if (id == 8) {
               currentPage = DrawerSections.update;
+            }else if (id == 9) {
+              currentPage = DrawerSections.setting;
             }
           });
         },
@@ -168,4 +175,6 @@ enum DrawerSections {
   expense,
   complain,
   update,
+  setting,
 }
+

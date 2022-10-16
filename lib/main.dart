@@ -6,7 +6,7 @@ import 'package:practice/forget.dart';
 import 'package:practice/newpassword.dart';
 import 'package:practice/newsdetail.dart';
 import 'package:practice/register.dart';
-import 'contactdetail.dart';
+import 'package:practice/update.dart';
 import 'home.dart';
 import 'login.dart';
 
@@ -34,13 +34,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
     debugShowCheckedModeBanner: false,
-      home:AnimatedSplashScreen(splash:
-        Image.asset('assest/homelogo.jpg',
-
-        ),
-        backgroundColor: Colors.black,
-        duration: 2500,
-        nextScreen:MyLogin(),),
+      home:MyHome(),
+      // AnimatedSplashScreen(splash:
+      //   Image.asset('assest/homelogo.jpg',
+      //
+      //   ),
+      //   backgroundColor: Colors.black,
+      //   duration: 2500,
+      //   nextScreen:MyLogin(),),
 
     routes: {
     'register': (context) => MyRegister(),
@@ -48,10 +49,10 @@ class MyApp extends StatelessWidget {
     'home': (context) => MyHome(),
       'event1':(context) => ED(),
       'news1':(context) => ND(),
-      'contact1':(context) => CD(),
       'forget':(context)=>ForgetPassword(),
       'checknumber':(context)=>CheckNumber(),
       'newpassword':(context)=>NewPassword(),
+      'update' :(context)=>UpdatePage(),
     },
 
     theme: ThemeData(
