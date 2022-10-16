@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "463387125420",
+    "project_id": "practice-ceadd",
+    "storage_bucket": "practice-ceadd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463387125420:android:f3fd85289fb1bea21a6109",
+        "android_client_info": {
+          "package_name": "com.example.practice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463387125420-1g2nvaqvp1515c5taups5k8ktmqon0br.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.practice",
+            "certificate_hash": "0ca09b3fffeec2c4bf8c5ae18bd4cea94086ffc5"
+          }
+        },
+        {
+          "client_id": "463387125420-1h2hv99dg27al5b9en89oedt7632j543.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLSdyKoYhT2BqXumOhFmGEfpKlYwcU7JM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463387125420-1h2hv99dg27al5b9en89oedt7632j543.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
