@@ -1,4 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/checknumber.dart';
 import 'package:practice/eventdetail.dart';
@@ -7,12 +9,14 @@ import 'package:practice/newpassword.dart';
 import 'package:practice/newsdetail.dart';
 import 'package:practice/register.dart';
 import 'package:practice/update.dart';
+import 'firebase_options.dart';
 import 'home.dart';
 import 'login.dart';
 
-void main()
-{
-  runApp( MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
     debugShowCheckedModeBanner: false,
-      home:MyHome(),
+      home:MyLogin(),
       // AnimatedSplashScreen(splash:
       //   Image.asset('assest/homelogo.jpg',
       //

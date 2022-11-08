@@ -7,7 +7,7 @@ class MyHeaderDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
           color: Color(0xff3957ed),
-      height: 210,
+      height: 200,
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
@@ -16,7 +16,6 @@ class MyHeaderDrawer extends StatelessWidget {
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.asset('assest/user.png',
-
                   fit: BoxFit.cover,
                   width: 90,
                   height: 90,

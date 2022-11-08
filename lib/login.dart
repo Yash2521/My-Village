@@ -41,7 +41,7 @@ class MyLogin extends StatelessWidget {
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           prefixIcon: Icon(Icons.phone_android),
-                          labelText:"Phone number",
+                          labelText:"Enter Email",
                           labelStyle: TextStyle(
                             fontSize: 18,
                             color: Colors.grey[400],
@@ -92,13 +92,12 @@ class MyLogin extends StatelessWidget {
                  Row(
                    children: [
                      SizedBox(
-                       width: 200,
+                       width: 165,
                      ),
                      GestureDetector(
                        onTap: () {Navigator.pushNamed(context, 'forget');},
                        child: Text(
                          "Forgot password?",
-
                          style: TextStyle(
                            color: Theme.of (context).primaryColor,
                            fontWeight: FontWeight.bold, fontSize: 18,
@@ -132,7 +131,7 @@ class MyLogin extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't have an acount?",
+                        "Don't have an account?",
                         style: TextStyle(
                           fontSize: 18,
                         ), // TextStyle

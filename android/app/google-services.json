@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "463387125420",
-    "project_id": "practice-ceadd",
-    "storage_bucket": "practice-ceadd.appspot.com"
+    "project_number": "635818869780",
+    "project_id": "my-village-7348c",
+    "storage_bucket": "my-village-7348c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:463387125420:android:f3fd85289fb1bea21a6109",
+        "mobilesdk_app_id": "1:635818869780:android:59b8bed6e3ab607972d301",
         "android_client_info": {
           "package_name": "com.example.practice"
         }
       },
       "oauth_client": [
         {
-          "client_id": "463387125420-1g2nvaqvp1515c5taups5k8ktmqon0br.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.practice",
-            "certificate_hash": "0ca09b3fffeec2c4bf8c5ae18bd4cea94086ffc5"
-          }
-        },
-        {
-          "client_id": "463387125420-1h2hv99dg27al5b9en89oedt7632j543.apps.googleusercontent.com",
+          "client_id": "635818869780-751e8mp1vvcodkg8018unbbga4cnqk15.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCLSdyKoYhT2BqXumOhFmGEfpKlYwcU7JM"
+          "current_key": "AIzaSyBf9JzeUMKllooqy534xcMu3yyF5SfPmVg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "463387125420-1h2hv99dg27al5b9en89oedt7632j543.apps.googleusercontent.com",
+              "client_id": "635818869780-751e8mp1vvcodkg8018unbbga4cnqk15.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

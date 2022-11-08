@@ -1,7 +1,15 @@
+// import 'dart:ffi';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class MyRegister extends StatelessWidget {
   @override
+  final _firestore = FirebaseFirestore.instance;
+  final _auth =FirebaseAuth.instance;
+  late String name;
+  late String email;
+  late String password;
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -72,7 +80,7 @@ class MyRegister extends StatelessWidget {
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         prefixIcon: Icon(Icons.phone_android),
-                        labelText:"Phone number",
+                        labelText:"Enter Email",
                         labelStyle: TextStyle(
                           fontSize: 18,
                           color: Colors.grey[400],
@@ -97,6 +105,10 @@ class MyRegister extends StatelessWidget {
                         border: InputBorder.none,
                         prefixIcon: Icon(Icons.lock_outline_rounded),
                         labelText:"Password",
+
+                        // onChanged: (value){
+                        //   email=value;
+                        // },
                         labelStyle: TextStyle(
                           fontSize: 18,
                           color: Colors.grey[400],
@@ -108,27 +120,27 @@ class MyRegister extends StatelessWidget {
 
                 SizedBox(height: 10),
 
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-                  child: TextFormField(
-                    obscureText: true,
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                    ),
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.lock),
-                        labelText:"Confirm password",
-                        labelStyle: TextStyle(
-                          fontSize: 18,
-                          color: Colors.grey[400],
-                          fontWeight: FontWeight.w800,
-                        )
-                    ),
-                  ),
-                ),
+                // Container(
+                //   padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                //   child: TextFormField(
+                //     obscureText: true,
+                //     style: TextStyle(
+                //       color: Theme.of(context).primaryColor,
+                //       fontWeight: FontWeight.bold,
+                //       fontSize: 22,
+                //     ),
+                //     decoration: InputDecoration(
+                //         border: InputBorder.none,
+                //         prefixIcon: Icon(Icons.lock),
+                //         labelText:"Confirm password",
+                //         labelStyle: TextStyle(
+                //           fontSize: 18,
+                //           color: Colors.grey[400],
+                //           fontWeight: FontWeight.w800,
+                //         )
+                //     ),
+                //   ),
+                // ),
 
                 SizedBox(height: 10),
 

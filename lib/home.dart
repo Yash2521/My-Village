@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
               currentPage == DrawerSections.complain ? true : false),
           menuItem(8, "Update Details", Icons.update,
               currentPage == DrawerSections.update ? true : false),
-          menuItem(9, "Setting", Icons.settings,
+          menuItem(9, "Settings", Icons.settings,
               currentPage == DrawerSections.setting ? true : false),
         ],
       ),
