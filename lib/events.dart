@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:practice/eventdetail.dart';
 
 class EventsPage extends StatefulWidget {
 
   @override
   State<EventsPage> createState() => _EventsPageState();
 }
-
 class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class _EventsPageState extends State<EventsPage> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, 'event1');
+                    Navigator.push(context,  MaterialPageRoute(builder: (context) => ED()),);
                   },
                   child: Container(
                     width: 370,
@@ -52,7 +52,7 @@ class _EventsPageState extends State<EventsPage> {
 
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, 'event1');
+                    Navigator.push(context,  MaterialPageRoute(builder: (context) => ED()),);
                   },
                   child: Container(
                     width: 370,
@@ -69,7 +69,7 @@ class _EventsPageState extends State<EventsPage> {
 
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, 'event1');
+                    Navigator.push(context,  MaterialPageRoute(builder: (context) => ED()),);
                   },
                   child: Container(
                     width: 370,
@@ -86,7 +86,7 @@ class _EventsPageState extends State<EventsPage> {
 
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, 'event1');
+                    Navigator.push(context,  MaterialPageRoute(builder: (context) => ED()),);
                   },
                   child: Container(
                     width: 370,

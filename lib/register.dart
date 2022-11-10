@@ -2,14 +2,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:practice/home.dart';
 
-class MyRegister extends StatelessWidget {
+import 'login.dart';
+
+class MyRegister extends StatefulWidget {
+  @override
+  State<MyRegister> createState() => _MyRegisterState();
+}
+
+class _MyRegisterState extends State<MyRegister> {
   @override
   final _firestore = FirebaseFirestore.instance;
+
   final _auth =FirebaseAuth.instance;
   late String name;
   late String email;
-  late String password;
+  late String pass;
+
+  @override
+  void initState() {
+    name = "Flutter Campus";
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -46,32 +62,39 @@ class MyRegister extends StatelessWidget {
 
                 SizedBox(height: 30,),
 
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-                  child: TextFormField(
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                    ),
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.person_outlined),
-                        labelText:"Name",
-                        labelStyle: TextStyle(
-                          fontSize: 18,
-                          color: Colors.grey[400],
-                          fontWeight: FontWeight.w800,
-                        )
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                    child: TextFormField(
+                      onChanged: (value){
+                        name=value;
+                      },
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                      ),
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          prefixIcon: Icon(Icons.person_outline_outlined),
+                          labelText:"Name",
+                          labelStyle: TextStyle(
+                            fontSize: 18,
+                            color: Colors.grey[400],
+                            fontWeight: FontWeight.w800,
+                          )
+                      ),
                     ),
                   ),
-                ),
+
 
                 SizedBox(height: 10),
 
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                   child: TextFormField(
+                    onChanged: (value){
+                      email=value;
+                    },
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
@@ -79,7 +102,7 @@ class MyRegister extends StatelessWidget {
                     ),
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        prefixIcon: Icon(Icons.phone_android),
+                        prefixIcon: Icon(Icons.mark_email_unread_outlined),
                         labelText:"Enter Email",
                         labelStyle: TextStyle(
                           fontSize: 18,
@@ -95,6 +118,9 @@ class MyRegister extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                   child: TextFormField(
+                    onChanged: (value){
+                      pass=value;
+                    },
                     obscureText: true,
                     style: TextStyle(
                       color: Theme.of(context).primaryColor,
@@ -103,7 +129,7 @@ class MyRegister extends StatelessWidget {
                     ),
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        prefixIcon: Icon(Icons.lock_outline_rounded),
+                        prefixIcon: Icon(Icons.phonelink_lock_outlined),
                         labelText:"Password",
 
                         // onChanged: (value){
@@ -155,7 +181,25 @@ class MyRegister extends StatelessWidget {
                     //   borderRadius: BorderRadius.circular (12),
                     // ),
                     onPressed: (){
-                    Navigator.pushNamed(context, 'home');
+                      _auth
+                          .createUserWithEmailAndPassword(
+                          email: email, password: pass)
+                          .then((signedInUser) {
+                        _firestore.collection('users').add({
+                          'email': email,
+                          'name': name,
+                          'pass': pass,
+                        }).then((value) {
+                          if (signedInUser != null) {
+                            Navigator.push(context,  MaterialPageRoute(builder: (context) => MyLogin()),);
+                          }
+                        }).catchError((e) {
+                          print(e);
+                        });
+                      }).catchError((e) {
+                        print(e);
+                      });
+                      //Navigator.pushNamed(context, 'home');
                      },
                     child: Text("Create Account"),
                   ),
@@ -169,16 +213,18 @@ class MyRegister extends StatelessWidget {
                     Text(
                       "Already have an account?",
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 17,
                       ), // TextStyle
                     ),
                     GestureDetector(
-                      onTap: () {Navigator.pushNamed(context, 'login');},
+                      onTap: () {
+                        Navigator.push(context,  MaterialPageRoute(builder: (context) => MyLogin()),);
+                        },
                       child: Text(
                         "Login",
                         style: TextStyle(
                           color: Theme.of (context).primaryColor,
-                          fontWeight: FontWeight.bold, fontSize: 18,
+                          fontWeight: FontWeight.bold, fontSize: 17,
                         ) ,),
                     ),// Text
                   ],

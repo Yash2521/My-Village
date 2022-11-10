@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'newsdetail.dart';
+
 class NewsPage extends StatefulWidget {
   @override
   State<NewsPage> createState() => _NewsPageState();
-  String inkwell='';
 }
 
 class _NewsPageState extends State<NewsPage> {
@@ -39,10 +40,7 @@ class _NewsPageState extends State<NewsPage> {
                 children: [
                   InkWell(
                     onTap: () {
-                      // setState(() {
-                      //   // state will be set when the inkwell area is tapped
-                      //   inkwell='Inkwell Tapped';
-                     // });
+                      Navigator.push(context,  MaterialPageRoute(builder: (context) => ND()),);
                     },
                     child: Container(
                       width: 350,
@@ -59,13 +57,6 @@ class _NewsPageState extends State<NewsPage> {
                   ),
 
                 ],
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, 'login');
-                  print("hii");
-                },
-                child: Image(image: AssetImage('assest/news.jpg')),
               ),
             ],
           ),

@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:practice/login.dart';
+import 'package:practice/register.dart';
 import 'package:practice/setting.dart';
 import 'expense.dart';
 import 'contacts.dart';
@@ -9,6 +12,7 @@ import 'voting.dart';
 import 'complain.dart';
 import 'update.dart';
 import 'drawer.dart';
+
 
 void main() {
   runApp(MyHome());
@@ -104,6 +108,15 @@ class _HomePageState extends State<HomePage> {
               currentPage == DrawerSections.update ? true : false),
           menuItem(9, "Settings", Icons.settings,
               currentPage == DrawerSections.setting ? true : false),
+          ElevatedButton(onPressed: (){
+            FirebaseAuth.instance
+                .signOut()
+                .then((value) {
+              Navigator.push(context,  MaterialPageRoute(builder: (context) => MyLogin()),);
+            }).catchError((e) {
+              print(e);
+              });
+          }, child: Text("Log Out"))
         ],
       ),
     );

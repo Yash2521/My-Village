@@ -1,9 +1,24 @@
-
-
 import 'package:flutter/material.dart';
-
-class MyLogin extends StatelessWidget {
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:practice/home.dart';
+import 'package:practice/register.dart';
+class MyLogin extends StatefulWidget {
   @override
+  State<MyLogin> createState() => _MyLoginState();
+}
+
+class _MyLoginState extends State<MyLogin> {
+  @override
+  late String email;
+  late String pass;
+
+  @override
+  void initState() {
+    email = "Flutter Campus";
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -14,7 +29,7 @@ class MyLogin extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(height: 20),
-                  Icon(Icons.person_outlined,color: Theme.of(context).primaryColor,size: 90,),
+                  Icon(Icons.person_outline_outlined,color: Theme.of(context).primaryColor,size: 90,),
                   SizedBox(height: 10),
 
                   Text("Welcome Back", style: TextStyle(
@@ -33,6 +48,9 @@ class MyLogin extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                     child: TextFormField(
+                      onChanged: (value){
+                        email=value;
+                      },
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
@@ -40,7 +58,7 @@ class MyLogin extends StatelessWidget {
                       ),
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          prefixIcon: Icon(Icons.phone_android),
+                          prefixIcon: Icon(Icons.mark_email_unread_outlined),
                           labelText:"Enter Email",
                           labelStyle: TextStyle(
                             fontSize: 18,
@@ -57,6 +75,9 @@ class MyLogin extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                     child: TextFormField(
+                      onChanged: (value){
+                        pass=value;
+                      },
                       obscureText: true,
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
@@ -66,7 +87,7 @@ class MyLogin extends StatelessWidget {
                       ),
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          prefixIcon: Icon(Icons.lock),
+                          prefixIcon: Icon(Icons.phonelink_lock_outlined),
                           labelText:"Password",
                           labelStyle: TextStyle(
                             fontSize: 18,
@@ -88,23 +109,23 @@ class MyLogin extends StatelessWidget {
                   //   ],
                   // ),
 
-                  SizedBox(height: 10),
-                 Row(
-                   children: [
-                     SizedBox(
-                       width: 165,
-                     ),
-                     GestureDetector(
-                       onTap: () {Navigator.pushNamed(context, 'forget');},
-                       child: Text(
-                         "Forgot password?",
-                         style: TextStyle(
-                           color: Theme.of (context).primaryColor,
-                           fontWeight: FontWeight.bold, fontSize: 18,
-                         ) ,),
-                     ),// Text
-                   ],
-                 ),
+                  // SizedBox(height: 10),
+                 // Row(
+                 //   children: [
+                 //     SizedBox(
+                 //       width: 110,
+                 //     ),
+                 //     GestureDetector(
+                 //       onTap: () {Navigator.pushNamed(context, 'forget');},
+                 //       child: Text(
+                 //         "Forgot password?",
+                 //         style: TextStyle(
+                 //           color: Theme.of (context).primaryColor,
+                 //           fontWeight: FontWeight.bold, fontSize: 16,
+                 //         ) ,),
+                 //     ),// Text
+                 //   ],
+                 // ),
                   SizedBox(
                     height: 10,
                   ),
@@ -119,13 +140,45 @@ class MyLogin extends StatelessWidget {
                       //   borderRadius: BorderRadius.circular (12),
                       // ),
                       onPressed: (){
-                        Navigator.pushNamed(context, 'home');
+                        FirebaseAuth.instance
+                            .signInWithEmailAndPassword(
+                            email: email, password: pass)
+                            .then((FirebaseUser) {
+
+                          Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHome()),);
+                        })
+                            .catchError((e) {
+                          if (e.code == 'user-not-found') {
+                            print("No User Found for that Email");
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                backgroundColor: Colors.lightBlue,
+                                content: Text(
+                                  "No User Found for that Email",
+                                  style: TextStyle(fontSize: 18.0, color: Colors.black),
+                                ),
+                              ),
+                            );
+                          } else if (e.code == 'wrong-password') {
+                            print("Wrong Password Provided by User");
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                backgroundColor: Colors.lightBlue,
+                                content: Text(
+                                  "Wrong Password Provided by User",
+                                  style: TextStyle(fontSize: 18.0, color: Colors.black),
+                                ),
+                              ),
+                            );
+                          }
+                        });
+                        //Navigator.pushNamed(context, 'home');
                       },
                       child: Text("Login"),
                     ),
                   ),
 
-                  SizedBox(height: 10),
+                  SizedBox(height: 12),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -133,16 +186,18 @@ class MyLogin extends StatelessWidget {
                       Text(
                         "Don't have an account?",
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 17,
                         ), // TextStyle
                       ),
                       GestureDetector(
-                        onTap: () {Navigator.pushNamed(context, 'register');},
+                        onTap: () {
+                          Navigator.push(context,  MaterialPageRoute(builder: (context) => MyRegister()),);
+                          },
                         child: Text(
                           "Register",
                           style: TextStyle(
                             color: Theme.of (context).primaryColor,
-                            fontWeight: FontWeight.bold, fontSize: 18,
+                            fontWeight: FontWeight.bold, fontSize: 17,
                           ) ,),
                       ),// Text
                     ],

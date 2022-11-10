@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
 
+import 'home.dart';
+
 class ND extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 70,
+        backgroundColor: Color(0xff3957ed),
+        title: Text(
+          'Back',
+          style: TextStyle(color: Colors.black),
+        ),
+        leadingWidth: 30,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHome()),);
+          },
+        ),
+      ),
+      body: Center(
         child: Text("News Detail Page"),
       ),
     );
