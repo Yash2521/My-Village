@@ -78,17 +78,17 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 50,
             ),
-            Center(
-              child: ElevatedButton(
-                style: ButtonStyle(
-                 backgroundColor: MaterialStateColor.resolveWith((states) => Color(0xff3957ed)),
-                ),
-                onPressed: () {},
-                child: Text("SIGN OUT",
-                    style: TextStyle(
-                        fontSize: 16, letterSpacing: 2.2, color: Colors.white)),
-              ),
-            )
+            // Center(
+            //   child: ElevatedButton(
+            //     style: ButtonStyle(
+            //       backgroundColor: MaterialStateColor.resolveWith((states) => Color(0xff3957ed)),
+            //     ),
+            //     onPressed: () {},
+            //     child: Text("SIGN OUT",
+            //         style: TextStyle(
+            //             fontSize: 16, letterSpacing: 2.2, color: Colors.white)),
+            //   ),
+            // )
           ],
         ),
       ),

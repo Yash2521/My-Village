@@ -15,7 +15,7 @@ class MyHeaderDrawer extends StatelessWidget {
             accountEmail: Text('User@gmail.com'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                child: Image.asset('assest/drawer.png',
+                child: Image.asset('assest/user.png',
                   fit: BoxFit.cover,
                   width: 90,
                   height: 90,

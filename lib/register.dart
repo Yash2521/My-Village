@@ -1,9 +1,7 @@
-// import 'dart:ffi';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:practice/home.dart';
-
 import 'login.dart';
 
 class MyRegister extends StatefulWidget {
@@ -131,7 +129,6 @@ class _MyRegisterState extends State<MyRegister> {
                         border: InputBorder.none,
                         prefixIcon: Icon(Icons.phonelink_lock_outlined),
                         labelText:"Password",
-
                         // onChanged: (value){
                         //   email=value;
                         // },
@@ -143,30 +140,6 @@ class _MyRegisterState extends State<MyRegister> {
                     ),
                   ),
                 ),
-
-                SizedBox(height: 10),
-
-                // Container(
-                //   padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-                //   child: TextFormField(
-                //     obscureText: true,
-                //     style: TextStyle(
-                //       color: Theme.of(context).primaryColor,
-                //       fontWeight: FontWeight.bold,
-                //       fontSize: 22,
-                //     ),
-                //     decoration: InputDecoration(
-                //         border: InputBorder.none,
-                //         prefixIcon: Icon(Icons.lock),
-                //         labelText:"Confirm password",
-                //         labelStyle: TextStyle(
-                //           fontSize: 18,
-                //           color: Colors.grey[400],
-                //           fontWeight: FontWeight.w800,
-                //         )
-                //     ),
-                //   ),
-                // ),
 
                 SizedBox(height: 10),
 

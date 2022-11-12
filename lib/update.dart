@@ -91,7 +91,7 @@ class _UpdatePageState extends State<UpdatePage> {
                     decoration: InputDecoration(
 
                         prefixIcon: Icon(Icons.person),
-                        labelText:"FullName",
+                        labelText:"Full Name",
                         labelStyle: TextStyle(
                           fontSize: 18,
                           color: Colors.grey[400],
@@ -112,7 +112,7 @@ class _UpdatePageState extends State<UpdatePage> {
                     decoration: InputDecoration(
 
                         prefixIcon: Icon(Icons.phone_android),
-                        labelText:"PhoneNumber",
+                        labelText:"Enter Email",
                         labelStyle: TextStyle(
                           fontSize: 18,
                           color: Colors.grey[400],

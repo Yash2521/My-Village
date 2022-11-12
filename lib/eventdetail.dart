@@ -22,7 +22,8 @@ class _EDState extends State<ED> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHome()),);
+            Navigator.pop(context);
+            //Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHome()),);
           },
         ),
       ),
