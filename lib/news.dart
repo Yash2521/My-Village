@@ -47,15 +47,12 @@ class _NewsPageState extends State<NewsPage> {
                       height: 170,
                       margin: EdgeInsets.fromLTRB(20.0, 45.0, 0.0, 0.0),
                       decoration: BoxDecoration(
-
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(image: AssetImage('assest/news.jpg'),
                             fit: BoxFit.fitWidth,)
                       ),
                     ),
-
                   ),
-
                 ],
               ),
             ],

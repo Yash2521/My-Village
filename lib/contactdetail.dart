@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class CD extends StatelessWidget {
   //const Setting({Key? key}) : super(key: key);
 

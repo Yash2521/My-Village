@@ -29,7 +29,7 @@ class _EDState extends State<ED> {
       ),
 
       body: Center(
-        child: Text("Events Page",style: TextStyle(
+        child: Text("Date:26th September 2023 \n Venue: Bapa Sitaram Hall \n Time: 8:30 PM",style: TextStyle(
           fontSize: 20, fontWeight: FontWeight.bold,),
      ),
     )

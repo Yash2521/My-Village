@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:practice/eventdetail.dart';
+import 'package:practice/Events/navratri.dart';
+import 'Events/diwali.dart';
+import 'Events/dussehra.dart';
+import 'Events/holi.dart';
 
 class EventsPage extends StatefulWidget {
-
   @override
   State<EventsPage> createState() => _EventsPageState();
 }
@@ -52,7 +54,7 @@ class _EventsPageState extends State<EventsPage> {
 
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,  MaterialPageRoute(builder: (context) => ED()),);
+                    Navigator.push(context,  MaterialPageRoute(builder: (context) => DI()),);
                   },
                   child: Container(
                     width: 370,
@@ -69,7 +71,7 @@ class _EventsPageState extends State<EventsPage> {
 
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,  MaterialPageRoute(builder: (context) => ED()),);
+                    Navigator.push(context,  MaterialPageRoute(builder: (context) => HO()),);
                   },
                   child: Container(
                     width: 370,
@@ -86,7 +88,7 @@ class _EventsPageState extends State<EventsPage> {
 
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,  MaterialPageRoute(builder: (context) => ED()),);
+                    Navigator.push(context,  MaterialPageRoute(builder: (context) => DU()),);
                   },
                   child: Container(
                     width: 370,

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:practice/home.dart';
 import 'login.dart';
 
 class MyRegister extends StatefulWidget {
@@ -12,9 +11,9 @@ class MyRegister extends StatefulWidget {
 class _MyRegisterState extends State<MyRegister> {
   @override
   final _firestore = FirebaseFirestore.instance;
-
   final _auth =FirebaseAuth.instance;
   late String name;
+  late String address;
   late String email;
   late String pass;
 
@@ -44,7 +43,8 @@ class _MyRegisterState extends State<MyRegister> {
                 ),
 
                 SizedBox(height: 20),
-                Icon(Icons.person_outlined,color: Theme.of(context).primaryColor,size: 90,),
+
+                Icon(Icons.person,color: Theme.of(context).primaryColor,size: 90,),
                 SizedBox(height: 10),
 
                 Text("Create Account", style: TextStyle(
@@ -83,6 +83,35 @@ class _MyRegisterState extends State<MyRegister> {
                       ),
                     ),
                   ),
+
+                SizedBox(height: 10),
+
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                  child: TextFormField(
+                    onChanged: (value){
+                      address=value;
+                    },
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        prefixIcon: Icon(Icons.home_work_outlined),
+                        labelText:"Home Address",
+                        // onChanged: (value){
+                        //   email=value;
+                        // },
+                        labelStyle: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey[400],
+                          fontWeight: FontWeight.w800,
+                        )
+                    ),
+                  ),
+                ),
 
 
                 SizedBox(height: 10),
@@ -158,10 +187,11 @@ class _MyRegisterState extends State<MyRegister> {
                           .createUserWithEmailAndPassword(
                           email: email, password: pass)
                           .then((signedInUser) {
-                        _firestore.collection('users').add({
+                        _firestore.collection("village").add({
                           'email': email,
                           'name': name,
                           'pass': pass,
+                          'address': address,
                         }).then((value) {
                           if (signedInUser != null) {
                             Navigator.push(context,  MaterialPageRoute(builder: (context) => MyLogin()),);

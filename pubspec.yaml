@@ -46,10 +46,11 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.3
 
 
+
 flutter_icons:
   android: true
   ios: true
-  image_path: "assest/logo2.jpeg"
+  image_path: "assest/applogo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

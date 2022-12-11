@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:practice/home.dart';
+import 'package:practice/loading.dart';
 import 'package:practice/register.dart';
+
 class MyLogin extends StatefulWidget {
   @override
   State<MyLogin> createState() => _MyLoginState();
 }
 
 class _MyLoginState extends State<MyLogin> {
+  bool isLoading = false;
   @override
   late String email;
   late String pass;
-
   @override
   void initState() {
     email = "Flutter Campus";
@@ -97,35 +99,7 @@ class _MyLoginState extends State<MyLogin> {
                       ),
                     ),
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.end,
-                  //   children: [
-                  //     TextButton(onPressed: () {},
-                  //         child: Text("Forgot Password?",style: TextStyle(
-                  //           fontSize: 18,
-                  //           fontWeight: FontWeight.bold,
-                  //           color: Theme.of(context).primaryColor,
-                  //         ),))
-                  //   ],
-                  // ),
 
-                  // SizedBox(height: 10),
-                 // Row(
-                 //   children: [
-                 //     SizedBox(
-                 //       width: 110,
-                 //     ),
-                 //     GestureDetector(
-                 //       onTap: () {Navigator.pushNamed(context, 'forget');},
-                 //       child: Text(
-                 //         "Forgot password?",
-                 //         style: TextStyle(
-                 //           color: Theme.of (context).primaryColor,
-                 //           fontWeight: FontWeight.bold, fontSize: 16,
-                 //         ) ,),
-                 //     ),// Text
-                 //   ],
-                 // ),
                   SizedBox(
                     height: 10,
                   ),
@@ -133,18 +107,14 @@ class _MyLoginState extends State<MyLogin> {
                     height: 55,
                     width: double.infinity,
                     child: ElevatedButton(
-                      // color: Theme.of(context).primaryColor,
-                      // textColor: Colors.white,
-                      // onPressed: (){Navigator.pushNamed(context, 'home');},
-                      // shape: RoundedRectangleBorder(
-                      //   borderRadius: BorderRadius.circular (12),
-                      // ),
-                      onPressed: (){
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.blue
+                      ),
+                      onPressed: () {
                         FirebaseAuth.instance
                             .signInWithEmailAndPassword(
                             email: email, password: pass)
                             .then((FirebaseUser) {
-
                           Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHome()),);
                         })
                             .catchError((e) {
@@ -159,7 +129,8 @@ class _MyLoginState extends State<MyLogin> {
                                 ),
                               ),
                             );
-                          } else if (e.code == 'wrong-password') {
+                          }
+                          else if (e.code == 'wrong-password') {
                             print("Wrong Password Provided by User");
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
@@ -172,9 +143,74 @@ class _MyLoginState extends State<MyLogin> {
                             );
                           }
                         });
+
+                        setState(() {
+                          isLoading = true;
+                        });
+
+                        // we had used future delayed to stop loading after
+                        // 3 seconds and show text "submit" on the screen.
+                        Future.delayed(const Duration(seconds: 3), (){
+                          setState(() {
+                            isLoading = false;
+                          });
+                        }
+                        );
+                      }, child: isLoading? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // as elevated button gets clicked we will see text"Loading..."
+                      // on the screen with circular progress indicator white in color.
+                      //as loading gets stopped "Submit" will be displayed
+                      children: const [
+                       // Text('Loading...', style: TextStyle(fontSize: 20),),
+                        SizedBox(width: 10,),
+                        CircularProgressIndicator(color: Colors.white,),
+                      ],
+                    ) : const Text('Login'),
+
+                      // color: Theme.of(context).primaryColor,
+                      // textColor: Colors.white,
+                      // onPressed: (){Navigator.pushNamed(context, 'home');},
+                      // shape: RoundedRectangleBorder(
+                      //   borderRadius: BorderRadius.circular (12),
+                      // ),
+                      // onPressed: (){
+                      //   FirebaseAuth.instance
+                      //       .signInWithEmailAndPassword(
+                      //       email: email, password: pass)
+                      //       .then((FirebaseUser) {
+                      //     Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHome()),);
+                      //   })
+                      //       .catchError((e) {
+                      //     if (e.code == 'user-not-found') {
+                      //       print("No User Found for that Email");
+                      //       ScaffoldMessenger.of(context).showSnackBar(
+                      //         SnackBar(
+                      //           backgroundColor: Colors.lightBlue,
+                      //           content: Text(
+                      //             "No User Found for that Email",
+                      //             style: TextStyle(fontSize: 18.0, color: Colors.black),
+                      //           ),
+                      //         ),
+                      //       );
+                      //     }
+                      //     else if (e.code == 'wrong-password') {
+                      //       print("Wrong Password Provided by User");
+                      //       ScaffoldMessenger.of(context).showSnackBar(
+                      //         SnackBar(
+                      //           backgroundColor: Colors.lightBlue,
+                      //           content: Text(
+                      //             "Wrong Password Provided by User",
+                      //             style: TextStyle(fontSize: 18.0, color: Colors.black),
+                      //           ),
+                      //         ),
+                      //       );
+                      //     }
+                      //   });
                         //Navigator.pushNamed(context, 'home');
-                      },
-                      child: Text("Login"),
+                      //},
+                     // child: Text("Login"),
+
                     ),
                   ),
 

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 bool showPassword = false;
 
 class UpdatePage extends StatefulWidget {
   const UpdatePage({Key? key}) : super(key: key);
-
   @override
   State<UpdatePage> createState() => _UpdatePageState();
 }
@@ -22,8 +23,8 @@ class _UpdatePageState extends State<UpdatePage> {
             child: Column(
               children: [
                 Text(
-                  "Edit Profile",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                  "Edit Details",
+                  style: GoogleFonts.anton(fontSize: 25, fontWeight: FontWeight.w500)
                 ),
                 SizedBox(
                   height: 15,
@@ -90,7 +91,7 @@ class _UpdatePageState extends State<UpdatePage> {
                     ),
                     decoration: InputDecoration(
 
-                        prefixIcon: Icon(Icons.person),
+                        prefixIcon: Icon(Icons.person_outline),
                         labelText:"Full Name",
                         labelStyle: TextStyle(
                           fontSize: 18,
@@ -111,7 +112,7 @@ class _UpdatePageState extends State<UpdatePage> {
                     ),
                     decoration: InputDecoration(
 
-                        prefixIcon: Icon(Icons.phone_android),
+                        prefixIcon: Icon(Icons.email_outlined),
                         labelText:"Enter Email",
                         labelStyle: TextStyle(
                           fontSize: 18,
@@ -132,8 +133,8 @@ class _UpdatePageState extends State<UpdatePage> {
                     ),
                     decoration: InputDecoration(
 
-                        prefixIcon: Icon(Icons.lock_rounded),
-                        labelText:"Password",
+                        prefixIcon: Icon(Icons.home_work_outlined),
+                        labelText:"Home Location",
                         labelStyle: TextStyle(
                           fontSize: 18,
                           color: Colors.grey[400],
@@ -153,8 +154,8 @@ class _UpdatePageState extends State<UpdatePage> {
                       fontSize: 22,
                     ),
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.home),
-                        labelText:"Home Location",
+                        prefixIcon: Icon(Icons.lock_outline),
+                        labelText:"Password",
                         labelStyle: TextStyle(
                           fontSize: 18,
                           color: Colors.grey[400],
@@ -164,7 +165,7 @@ class _UpdatePageState extends State<UpdatePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 35,
+                  height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -176,9 +177,9 @@ class _UpdatePageState extends State<UpdatePage> {
                     onPressed: (){
                     Navigator.pushNamed(context, 'home');
                     },
-                     child: Text("Update Profile",style: TextStyle(
+                     child: Text("Update Details",style: TextStyle(
                        fontWeight: FontWeight.bold,
-                       fontSize: 17,
+                       fontSize: 16,
                      ),),
                     ),
                   ],
