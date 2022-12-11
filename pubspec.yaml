@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  switcher_button: ^0.0.4
   flutter:
     sdk: flutter
   animated_splash_screen:
@@ -39,6 +40,8 @@ dependencies:
   firebase_core: ^2.0.0
   cloud_firestore: ^4.0.1
   google_fonts: ^3.0.1
+  provider:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

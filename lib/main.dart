@@ -11,6 +11,9 @@ import 'package:practice/update.dart';
 import 'firebase_options.dart';
 import 'home.dart';
 import 'login.dart';
+import 'updatestudent.dart';
+import 'package:practice/thememodel.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

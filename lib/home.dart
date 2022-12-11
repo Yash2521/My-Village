@@ -8,6 +8,7 @@ import 'contacts.dart';
 import 'dashboard.dart';
 import 'events.dart';
 import 'news.dart';
+import 'updatestudent.dart';
 import 'voting.dart';
 import 'complain.dart';
 import 'update.dart';
@@ -58,7 +59,6 @@ class _HomePageState extends State<HomePage> {
     }else if (currentPage == DrawerSections.setting) {
       container = SettingsPage();
     }
-
 
     return Scaffold(
       appBar: AppBar(

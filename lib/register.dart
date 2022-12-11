@@ -192,6 +192,7 @@ class _MyRegisterState extends State<MyRegister> {
                           'name': name,
                           'pass': pass,
                           'address': address,
+                          "uid": _auth.currentUser!.uid
                         }).then((value) {
                           if (signedInUser != null) {
                             Navigator.push(context,  MaterialPageRoute(builder: (context) => MyLogin()),);
