@@ -27,10 +27,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  switcher_button: ^0.0.4
   flutter:
     sdk: flutter
+  image_picker: ^0.8.6
+  get: ^4.3.8
   animated_splash_screen:
+  day_night_switcher: ^0.2.0+1
 
 
   # The following adds the Cupertino Icons font to your application.

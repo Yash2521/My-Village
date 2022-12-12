@@ -2,18 +2,19 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:practice/Events/navratri.dart';
 import 'package:practice/newpassword.dart';
 import 'package:practice/newsdetail.dart';
 import 'package:practice/register.dart';
 import 'package:practice/splash.dart';
+import 'package:practice/theme_model.dart';
 import 'package:practice/update.dart';
+import 'package:practice/uploadphoto.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'home.dart';
 import 'login.dart';
-import 'updatestudent.dart';
-import 'package:practice/thememodel.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,25 +24,15 @@ void main() async {
 
 class MyApp extends StatelessWidget {
    MyApp ({Key? key}) : super(key: key);
-  // final MaterialColor primarySwatch = MaterialColor(0xff3957ed, <int, Color>{
-  //   50: Color(0xff3957ed),
-  //   100: Color(0xff3957ed),
-  //   200: Color(0xff3957ed),
-  //   300: Color(0xff3957ed),
-  //   400: Color(0xff3957ed),
-  //   500: Color(0xff3957ed),
-  //   600: Color(0xff3957ed),
-  //   700: Color(0xff3957ed),
-  //   800: Color(0xff3957ed),
-  //   900: Color(0xff3957ed),
-  // });
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(
+        create:(_)=>ThemeModel(),
+        child : Consumer (builder: (context, ThemeModel themeModal, child){
+    return GetMaterialApp(
     debugShowCheckedModeBanner: false,
       home:
-      // Splash(),
       AnimatedSplashScreen(splash:
         Image.asset('assest/homelogo.jpg',
           height: 500,
@@ -59,40 +50,13 @@ class MyApp extends StatelessWidget {
       'event1':(context) => ED(),
       'news1':(context) => ND(),
       'newpassword':(context)=>NewPassword(),
-      'update' :(context)=>UpdatePage(),
+      'update' :(context)=>UploadPhoto(),
     },
 
-    theme: ThemeData(
-    iconTheme: IconThemeData(color: Color(0xff3957ed)),
-    inputDecorationTheme: InputDecorationTheme(
-    enabledBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
-    borderSide: BorderSide(color: Colors.grey.shade400),
-    ),
-    border: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
-    )),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-    minimumSize: Size(double.infinity, 50),
-    shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(8),
-    )),
-    ),
-      textTheme: TextTheme(
-          headline4:
-          TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-          subtitle1: TextStyle(
-            color: Colors.grey.shade600,
-          )),
-      appBarTheme: AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          iconTheme: IconThemeData(color: Colors.black)),
-      // primaryColor: Color(0xff3957ed),
-      // primarySwatch: primarySwatch,
-    ),
-
+    theme: themeModal.isDark? ThemeData.dark(): ThemeData.light()
+    );
+        }
+        )
     );
   }
 }

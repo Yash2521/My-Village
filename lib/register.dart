@@ -9,6 +9,8 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  bool isLoading = false;
+
   @override
   final _firestore = FirebaseFirestore.instance;
   final _auth =FirebaseAuth.instance;
@@ -37,7 +39,7 @@ class _MyRegisterState extends State<MyRegister> {
                     IconButton( icon: Icon(Icons.arrow_back,
                       size:30,
                       color: Theme.of(context).primaryColor,
-                    ), onPressed: (){Navigator.pushNamed(context, 'login');},
+                    ), onPressed: (){Navigator.pop(context, 'login');},
                     ),
                   ],
                 ),
@@ -183,6 +185,7 @@ class _MyRegisterState extends State<MyRegister> {
                     //   borderRadius: BorderRadius.circular (12),
                     // ),
                     onPressed: (){
+
                       _auth
                           .createUserWithEmailAndPassword(
                           email: email, password: pass)
@@ -203,9 +206,32 @@ class _MyRegisterState extends State<MyRegister> {
                       }).catchError((e) {
                         print(e);
                       });
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      // we had used future delayed to stop loading after
+                      // 3 seconds and show text "submit" on the screen.
+                      Future.delayed(const Duration(seconds: 3), (){
+                        setState(() {
+                          isLoading = false;
+                        });
+                      }
+                      );
                       //Navigator.pushNamed(context, 'home');
                      },
-                    child: Text("Create Account"),
+                    child: isLoading? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // as elevated button gets clicked we will see text"Loading..."
+                      // on the screen with circular progress indicator white in color.
+                      //as loading gets stopped "Submit" will be displayed
+                      children: const [
+                        // Text('Loading...', style: TextStyle(fontSize: 20),),
+                        SizedBox(width: 10,),
+                        CircularProgressIndicator(color: Colors.white,),
+                      ],
+                    ) : const Text('Create Account'),
+                    //child: Text("Create Account"),
                   ),
                 ),
 

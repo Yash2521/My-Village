@@ -1,5 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:practice/theme_shared.dart';
+import 'package:practice/theme.dart';
 
 class ThemeModel extends ChangeNotifier{
   late bool _isDark;
@@ -19,5 +20,5 @@ class ThemeModel extends ChangeNotifier{
   getThemePreferences() async{
     _isDark=await themeSharedPreferences.getTheme();
     notifyListeners();
-  }
+    }
 }
