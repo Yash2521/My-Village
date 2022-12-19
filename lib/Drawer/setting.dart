@@ -1,6 +1,8 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:practice/main.dart';
+import 'package:practice/splash.dart';
 import 'package:practice/theme.dart';
 import 'package:practice/theme_model.dart';
 import 'package:provider/provider.dart';
@@ -13,27 +15,34 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPage extends State<SettingsPage> {
+
+  ThemeSharedPreferences themeSharedPreferences = ThemeSharedPreferences();
+
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context,ThemeModel themeNotifier,child){
-      return Scaffold(
-        body: Center(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 100,
-              ),
-              // DayNightSwitcherIcon(isDarkModeEnabled: , onStateChanged:),
-              Text(themeNotifier.isDark ? "Dark Mode" : "Light Mode"),
-              DayNightSwitcher(
-                  isDarkModeEnabled: themeNotifier.isDark? true:false ,
-                  onStateChanged: (value){
-                    themeNotifier.isDark?
-                    themeNotifier.isDark=false:
-                    themeNotifier.isDark=true;
-                  }
-              )
-            ],
+      return SafeArea(
+        child: Scaffold(
+          body: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 100,
+                ),
+                // DayNightSwitcherIcon(isDarkModeEnabled: , onStateChanged:),
+                Text(themeNotifier.isDark ? "Dark Mode" : "Light Mode"),
+                DayNightSwitcher(
+                    isDarkModeEnabled: themeNotifier.isDark ? true : false,
+                    onStateChanged: (value) {
+                      themeNotifier.isDark ? themeNotifier.isDark = false : themeNotifier.isDark = true;
+                      print(value);
+                      themeSharedPreferences.setTheme(value);
+                      setState(() {
+                      });
+                      // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> Splash()), (route) => false);
+                    })
+              ],
+            ),
           ),
         ),
       );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice/Events/navratri.dart';
-import 'Events/diwali.dart';
-import 'Events/dussehra.dart';
-import 'Events/holi.dart';
+import '../Events/diwali.dart';
+import '../Events/dussehra.dart';
+import '../Events/holi.dart';
 
 class EventsPage extends StatefulWidget {
   @override

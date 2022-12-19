@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:practice/Drawer/events.dart';
 import 'package:practice/home.dart';
 
-class ED extends StatefulWidget {
-  @override
-  State<ED> createState() => _EDState();
-}
-
-class _EDState extends State<ED> {
+class ND extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,16 +18,12 @@ class _EDState extends State<ED> {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
-              //Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHome()),);
             },
           ),
         ),
-
         body: Center(
-          child: Text("Date:26th September 2023 \n Venue: Bapa Sitaram Hall \n Time: 8:30 PM",style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold,),
-       ),
-      )
+          child: Text("New Delhi: India on Monday stoutly defended its import of crude oil from Russia amid the Ukraine conflict with External Affairs Minister S Jaishankar asserting that New Delhi's procurement was just one-sixth of the European purchase in the last nine months, in comments that came as a G7 price cap on Russian crude at 60 a barrel came into effect."),
+        ),
       ),
     );
   }

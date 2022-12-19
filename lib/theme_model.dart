@@ -10,6 +10,7 @@ class ThemeModel extends ChangeNotifier{
   ThemeModel(){
     _isDark=false;
     themeSharedPreferences=ThemeSharedPreferences();
+    getThemePreferences();
   }
 
   set isDark(bool value){

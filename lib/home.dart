@@ -1,33 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:practice/login.dart';
-import 'package:practice/register.dart';
-import 'package:practice/setting.dart';
-import 'expense.dart';
-import 'contacts.dart';
-import 'dashboard.dart';
-import 'events.dart';
-import 'news.dart';
-import 'uploadphoto.dart';
-import 'voting.dart';
-import 'complain.dart';
-import 'update.dart';
-import 'drawer.dart';
+import 'Drawer/setting.dart';
+import 'Drawer/expense.dart';
+import 'Drawer/contacts.dart';
+import 'Drawer/dashboard.dart';
+import 'Drawer/events.dart';
+import 'Drawer/news.dart';
+import 'Drawer/uploadphoto.dart';
+import 'Drawer/voting.dart';
+import 'Drawer/complain.dart';
+import 'Drawer/update.dart';
+import 'Drawer/drawer.dart';
 
-
-void main() {
-  runApp(MyHome());
-}
-
-class MyHome extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
-  }
-}
 
 class HomePage extends StatefulWidget {
   @override
@@ -55,26 +40,28 @@ class _HomePageState extends State<HomePage> {
     }else if (currentPage == DrawerSections.complain) {
       container = ComplainPage();
     }else if (currentPage == DrawerSections.update) {
-      container = UploadPhoto();
+      container = UpdatePage(title: '',);
     }else if (currentPage == DrawerSections.setting) {
       container = SettingsPage();
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        backgroundColor: Color(0xff3957ed),
-        title: Text("Village Management System"),
-      ),
-      body: container,
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: [
-                MyHeaderDrawer(),
-                MyDrawerList(),
-              ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 70,
+          backgroundColor: Color(0xff3957ed),
+          title: Text("Village Management System"),
+        ),
+        body: container,
+        drawer: Drawer(
+          child: SingleChildScrollView(
+            child: Container(
+              child: Column(
+                children: [
+                  MyHeaderDrawer(),
+                  MyDrawerList(),
+                ],
+              ),
             ),
           ),
         ),

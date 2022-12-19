@@ -4,17 +4,19 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practice/Events/navratri.dart';
-import 'package:practice/newpassword.dart';
-import 'package:practice/newsdetail.dart';
+import 'package:practice/Drawer/newsdetail.dart';
 import 'package:practice/register.dart';
-import 'package:practice/splash.dart';
 import 'package:practice/theme_model.dart';
-import 'package:practice/update.dart';
-import 'package:practice/uploadphoto.dart';
+import 'Drawer/update.dart';
+import 'package:practice/Drawer/uploadphoto.dart';
 import 'package:provider/provider.dart';
+import 'adminpanel.dart';
 import 'firebase_options.dart';
 import 'home.dart';
 import 'login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +26,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
    MyApp ({Key? key}) : super(key: key);
-
+    final auth=FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -40,20 +42,22 @@ class MyApp extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
         duration: 2500,
-        nextScreen:MyLogin(),
+        nextScreen:auth.currentUser==null?MyLogin():HomePage(),
         ),
 
     routes: {
       'register': (context) => MyRegister(),
       'login': (context) => MyLogin(),
-      'home': (context) => MyHome(),
+      'home': (context) => HomePage(),
       'event1':(context) => ED(),
       'news1':(context) => ND(),
-      'newpassword':(context)=>NewPassword(),
-      'update' :(context)=>UploadPhoto(),
+      'update' :(context)=>UpdatePage(title: '',),
+      'adminpanel' :(context)=>adminpanel(),
     },
-
-    theme: themeModal.isDark? ThemeData.dark(): ThemeData.light()
+      themeMode:themeModal.isDark ? ThemeMode.dark : ThemeMode.light,
+      theme: ThemeData(
+        brightness: themeModal.isDark ? Brightness.dark : Brightness.light,
+      ),
     );
         }
         )

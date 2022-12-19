@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:practice/home.dart';
 import 'package:practice/loading.dart';
 import 'package:practice/register.dart';
+import 'Drawer/update.dart';
+import 'secretary.dart';
 
 class MyLogin extends StatefulWidget {
   @override
@@ -12,9 +14,13 @@ class MyLogin extends StatefulWidget {
 
 class _MyLoginState extends State<MyLogin> {
   bool isLoading = false;
+  bool obsure=true;
+  final em = TextEditingController();
+  final _formkey = GlobalKey<FormState>();
   @override
   late String email;
   late String pass;
+
   @override
   void initState() {
     email = "Flutter Campus";
@@ -24,7 +30,9 @@ class _MyLoginState extends State<MyLogin> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
+        body:Form(
+          key: _formkey,
+          child: Padding(
           padding: EdgeInsets.all(20),
           child:Center(
             child: SingleChildScrollView(
@@ -50,6 +58,7 @@ class _MyLoginState extends State<MyLogin> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
                     child: TextFormField(
+                      controller: em,
                       onChanged: (value){
                         email=value;
                       },
@@ -58,8 +67,20 @@ class _MyLoginState extends State<MyLogin> {
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
                       ),
+                      validator: (value) {
+                        if(value!.isEmpty){
+                          return'*Required field';
+                        }
+                      },
                       decoration: InputDecoration(
-                          border: InputBorder.none,
+                      border:OutlineInputBorder(
+                      borderSide: BorderSide(width: 2,color: Colors.blueGrey),
+                      borderRadius: BorderRadius.circular(20.0)
+                      ),
+                          enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 1.5,color: Colors.blueGrey),
+                          borderRadius: BorderRadius.circular(20.0)
+                          ),
                           prefixIcon: Icon(Icons.mark_email_unread_outlined),
                           labelText:"Enter Email",
                           labelStyle: TextStyle(
@@ -80,16 +101,36 @@ class _MyLoginState extends State<MyLogin> {
                       onChanged: (value){
                         pass=value;
                       },
-                      obscureText: true,
+                      obscureText: obsure,
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
 
                       ),
+                      validator: (value) {
+                        if(value!.isEmpty){
+                          return'*Required field';
+                        }
+                      },
                       decoration: InputDecoration(
-                          border: InputBorder.none,
+                          border:OutlineInputBorder(
+                              borderSide: BorderSide(width: 2,color: Colors.blueGrey),
+                              borderRadius: BorderRadius.circular(20.0)
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(width: 1.5,color: Colors.blueGrey),
+                              borderRadius: BorderRadius.circular(20.0)
+                          ),
                           prefixIcon: Icon(Icons.phonelink_lock_outlined),
+                          suffixIcon:GestureDetector(
+                            child:obsure?Icon(Icons.visibility_off):Icon(Icons.visibility),
+                            onTap: (){
+                              setState(() {
+                                obsure=!obsure;
+                              });
+                            },
+                          ),
                           labelText:"Password",
                           labelStyle: TextStyle(
                             fontSize: 18,
@@ -107,15 +148,28 @@ class _MyLoginState extends State<MyLogin> {
                     height: 55,
                     width: double.infinity,
                     child: ElevatedButton(
+
                       style: ElevatedButton.styleFrom(
-                          primary: Colors.blue
+                          primary: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)
+                          )
                       ),
                       onPressed: () {
+                        if(!_formkey.currentState!.validate()){
+                          return;
+                        }
                         FirebaseAuth.instance
                             .signInWithEmailAndPassword(
                             email: email, password: pass)
                             .then((FirebaseUser) {
-                          Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHome()),);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ),
+                          );
+
                         })
                             .catchError((e) {
                           if (e.code == 'user-not-found') {
@@ -167,51 +221,8 @@ class _MyLoginState extends State<MyLogin> {
                         CircularProgressIndicator(color: Colors.white,),
                       ],
                     ) : const Text('Login'),
-
-                      // color: Theme.of(context).primaryColor,
-                      // textColor: Colors.white,
-                      // onPressed: (){Navigator.pushNamed(context, 'home');},
-                      // shape: RoundedRectangleBorder(
-                      //   borderRadius: BorderRadius.circular (12),
-                      // ),
-                      // onPressed: (){
-                      //   FirebaseAuth.instance
-                      //       .signInWithEmailAndPassword(
-                      //       email: email, password: pass)
-                      //       .then((FirebaseUser) {
-                      //     Navigator.push(context,  MaterialPageRoute(builder: (context) => MyHome()),);
-                      //   })
-                      //       .catchError((e) {
-                      //     if (e.code == 'user-not-found') {
-                      //       print("No User Found for that Email");
-                      //       ScaffoldMessenger.of(context).showSnackBar(
-                      //         SnackBar(
-                      //           backgroundColor: Colors.lightBlue,
-                      //           content: Text(
-                      //             "No User Found for that Email",
-                      //             style: TextStyle(fontSize: 18.0, color: Colors.black),
-                      //           ),
-                      //         ),
-                      //       );
-                      //     }
-                      //     else if (e.code == 'wrong-password') {
-                      //       print("Wrong Password Provided by User");
-                      //       ScaffoldMessenger.of(context).showSnackBar(
-                      //         SnackBar(
-                      //           backgroundColor: Colors.lightBlue,
-                      //           content: Text(
-                      //             "Wrong Password Provided by User",
-                      //             style: TextStyle(fontSize: 18.0, color: Colors.black),
-                      //           ),
-                      //         ),
-                      //       );
-                      //     }
-                      //   });
-                        //Navigator.pushNamed(context, 'home');
-                      //},
-                     // child: Text("Login"),
-
                     ),
+
                   ),
 
                   SizedBox(height: 12),
@@ -237,12 +248,38 @@ class _MyLoginState extends State<MyLogin> {
                           ) ,),
                       ),// Text
                     ],
-                  )
+                  ),
+
+                  SizedBox(height: 7),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Secretary Login!?",
+                        style: TextStyle(
+                          fontSize: 17,
+                        ), // TextStyle
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,  MaterialPageRoute(builder: (context) => MySecretary()),);
+                        },
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            color: Theme.of (context).primaryColor,
+                            fontWeight: FontWeight.bold, fontSize: 17,
+                          ) ,),
+                      ),// Text
+                    ],
+                  ),
                 ],
               ),
             ),
           ),
         ),
+      ),
       ),
     );
   }
