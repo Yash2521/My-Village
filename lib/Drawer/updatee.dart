@@ -142,13 +142,13 @@ class _UpdatePage1State extends State<UpdatePage1> {
           const SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton.icon(
-                onPressed: imagePickerOption,
-                icon: const Icon(Icons.add_a_photo_sharp),
-                label: const Text('UPLOAD IMAGE')),
-          )
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: ElevatedButton.icon(
+          //       onPressed: imagePickerOption,
+          //       icon: const Icon(Icons.add_a_photo_sharp),
+          //       label: const Text('UPLOAD IMAGE')),
+          // )
         ],
       ),
     );
