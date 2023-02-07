@@ -30,7 +30,7 @@ class _UpdatePage1State extends State<UpdatePage1> {
           ),
           child: Container(
             color: Colors.white,
-            height: 250,
+            height: 220,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -42,7 +42,7 @@ class _UpdatePage1State extends State<UpdatePage1> {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
@@ -50,6 +50,9 @@ class _UpdatePage1State extends State<UpdatePage1> {
                     },
                     icon: const Icon(Icons.camera),
                     label: const Text("CAMERA"),
+                  ),
+                  const SizedBox(
+                    height: 8,
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
@@ -59,7 +62,7 @@ class _UpdatePage1State extends State<UpdatePage1> {
                     label: const Text("GALLERY"),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 8,
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
