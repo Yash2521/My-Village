@@ -1,0 +1,15 @@
+{
+"homePage": "मुख पृष्ठ",
+"villageManagementSystem": "ग्राम प्रबंधन प्रणाली",
+"personalInformation": "व्यक्तिगत जानकारी",
+"name": "नाम",
+"nameHint": "अपना नाम दर्ज करें",
+"email": "ईमेल",
+"emailHint": "अपना ईमेल दर्ज करें",
+"dateOfBirth": "जन्म की तारीख",
+"requiredField": "आवश्यक क्षेत्र",
+"submitInfo": "जानकारी जमा करें",
+"aboutUs": "हमारे बारे में",
+"settings": "समायोजन",
+"changeLanguage": "भाषा बदलो"
+}

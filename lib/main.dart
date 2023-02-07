@@ -10,6 +10,7 @@ import 'package:practice/theme_model.dart';
 import 'Drawer/update.dart';
 import 'package:practice/Drawer/uploadphoto.dart';
 import 'package:provider/provider.dart';
+import 'Drawer/updatee.dart';
 import 'adminpanel.dart';
 import 'firebase_options.dart';
 import 'home.dart';
@@ -17,6 +18,8 @@ import 'login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,12 +30,18 @@ void main() async {
 class MyApp extends StatelessWidget {
    MyApp ({Key? key}) : super(key: key);
     final auth=FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
         create:(_)=>ThemeModel(),
         child : Consumer (builder: (context, ThemeModel themeModal, child){
     return GetMaterialApp(
+
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+    locale: Locale('en', ''),
+
     debugShowCheckedModeBanner: false,
       home:
       AnimatedSplashScreen(splash:
@@ -51,7 +60,8 @@ class MyApp extends StatelessWidget {
       'home': (context) => HomePage(),
       'event1':(context) => ED(),
       'news1':(context) => ND(),
-      'update' :(context)=>UpdatePage(title: '',),
+      'update' :(context)=>UpdatePage1(),
+//        (title: '',),
       'adminpanel' :(context)=>adminpanel(),
     },
       themeMode:themeModal.isDark ? ThemeMode.dark : ThemeMode.light,

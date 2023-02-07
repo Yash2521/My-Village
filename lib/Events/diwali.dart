@@ -30,7 +30,7 @@ class _DIState extends State<DI> {
           ),
 
           body: Center(
-            child: Text("Date:21st October 2023 \n Venue: Matavadi \n Time: 9:30 PM",style: TextStyle(
+            child: Text("Date: 21st October 2023 \nVenue: Matavadi \nTime: 9:30 PM",style: TextStyle(
               fontSize: 20, fontWeight: FontWeight.bold,),
             ),
           )

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:practice/language_constants.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -11,7 +13,7 @@ class DashboardPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              "Welcome",
+              translation(context).email,
               textScaleFactor: 2,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
@@ -26,26 +28,28 @@ class DashboardPage extends StatelessWidget {
                   border: TableBorder.all(width: 2.0, color: Colors.black),
                   children: [
                     TableRow(children: [
-                      Text(
-                        "Name",
-                        textScaleFactor: 1.5,
+                      Center(
+                        child: Text(
+                          "Name",
+                          textScaleFactor: 1.5,
+                        ),
                       ),
-                      Text("ABC",
+                      Text("Vijay",
                           textScaleFactor: 1.5, textAlign: TextAlign.center),
                     ]),
                     TableRow(children: [
-                      Text("PhoneNo.", textScaleFactor: 1.5),
+                      Center(child: Text("Phone No.", textScaleFactor: 1.5)),
                       Text("9879879987",
                           textScaleFactor: 1.5, textAlign: TextAlign.center),
                     ]),
                     TableRow(children: [
-                      Text("Family Members", textScaleFactor: 1.5),
-                      Text("00",
+                      Center(child: Text("Family Members", textScaleFactor: 1.5)),
+                      Text("5",
                           textScaleFactor: 1.5, textAlign: TextAlign.center),
                     ]),
                     TableRow(children: [
-                      Text("Address", textScaleFactor: 1.5),
-                      Text("-",
+                      Center(child: Text("Address", textScaleFactor: 1.5)),
+                      Text("Varachha",
                           textScaleFactor: 1.5, textAlign: TextAlign.center),
                     ])
                   ]))

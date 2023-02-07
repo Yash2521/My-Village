@@ -30,7 +30,7 @@ class _HOState extends State<HO> {
           ),
 
           body: Center(
-            child: Text("Date:18th March 2023 \n Venue: Village Ground \n Time: 7:00 PM",style: TextStyle(
+            child: Text("Date: 18th March 2023 \nVenue: Village Ground \nTime: 7:00 PM",style: TextStyle(
               fontSize: 20, fontWeight: FontWeight.bold,),
             ),
           )

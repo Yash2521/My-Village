@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +15,10 @@ class UpdatePage extends StatefulWidget {
 }
 
 class _UpdatePageState extends State<UpdatePage> {
+  final currentuser = FirebaseAuth.instance;
+  final firestore=FirebaseFirestore.instance;
+  var user=FirebaseAuth.instance.currentUser;
+
   bool obsure=true;
   late String email=widget.title;
   late String name;
@@ -211,7 +216,7 @@ class _UpdatePageState extends State<UpdatePage> {
                               borderRadius: BorderRadius.circular(20.0)
                           ),
                           prefixIcon: Icon(Icons.phone),
-                          labelText:"Phone numbers",
+                          labelText:"Phone number",
                           labelStyle: TextStyle(
                             fontSize: 18,
                             color: Colors.grey[400],
@@ -230,13 +235,14 @@ class _UpdatePageState extends State<UpdatePage> {
                       ElevatedButton(
                         onPressed: () async {
                           DocumentReference documentReference =
-                          await FirebaseFirestore.instance.collection('village').doc(email);
+                          firestore.collection('village').doc(user!.email);
+                          //await FirebaseFirestore.instance.collection('village').doc(email);
                           documentReference.update({'name':name,'address':add,'member':member,'phone':phone});
                           Navigator.pushNamed(context, 'home');},
                         style: ButtonStyle(
                           backgroundColor: MaterialStateColor.resolveWith((states) => Color(0xff3957ed)),
                         ),
-
+ 
                        child: Text("Update Details",style: TextStyle(
                          fontWeight: FontWeight.bold,
                          fontSize: 16,

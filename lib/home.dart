@@ -7,12 +7,16 @@ import 'Drawer/contacts.dart';
 import 'Drawer/dashboard.dart';
 import 'Drawer/events.dart';
 import 'Drawer/news.dart';
+import 'Drawer/updatee.dart';
 import 'Drawer/uploadphoto.dart';
 import 'Drawer/voting.dart';
 import 'Drawer/complain.dart';
 import 'Drawer/update.dart';
 import 'Drawer/drawer.dart';
-
+import 'language.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'language.dart';
+import 'language_constants.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -38,9 +42,10 @@ class _HomePageState extends State<HomePage> {
     }else if (currentPage == DrawerSections.expense) {
       container = ExpensePage();
     }else if (currentPage == DrawerSections.complain) {
-      container = ComplainPage();
+      container = Complain();
     }else if (currentPage == DrawerSections.update) {
-      container = UpdatePage(title: '',);
+      container = UpdatePage1();
+        //(title: '',)
     }else if (currentPage == DrawerSections.setting) {
       container = SettingsPage();
     }
@@ -50,7 +55,10 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           toolbarHeight: 70,
           backgroundColor: Color(0xff3957ed),
-          title: Text("Village Management System"),
+          title: Text(
+              translation(context).villageManagementSystem
+          ),
+
         ),
         body: container,
         drawer: Drawer(
@@ -79,7 +87,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           menuItem(1, "Dashboard", Icons.dashboard_outlined,
               currentPage == DrawerSections.dashboard ? true : false),
-          menuItem(2, "Emergency Contact", Icons.people_alt_outlined,
+          menuItem(2, "Emergency Contacts", Icons.people_alt_outlined,
               currentPage == DrawerSections.contacts ? true : false),
           menuItem(3, "Events", Icons.event,
               currentPage == DrawerSections.events ? true : false),

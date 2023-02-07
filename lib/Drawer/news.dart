@@ -21,21 +21,14 @@ class _NewsPageState extends State<NewsPage> {
                 SizedBox(
                   height: 8,
                 ),
-                // Text("Events",
-                //   style: TextStyle(
-                //     fontSize: 40.0,
-                //     fontWeight: FontWeight.bold,
-                //     decoration: TextDecoration.underline,
-                //     fontFamily: GoogleFonts.gemunuLibre().fontFamily,
-                //   ),
-                // ),
+
                 Container(
                     width: 200,
                     height: 60,
                     child: Image.asset('assest/news2.jpg',
                     fit: BoxFit.fitWidth,)
-
                 ),
+
                 Row(
                   children: [
                     InkWell(

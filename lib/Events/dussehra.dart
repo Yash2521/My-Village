@@ -30,7 +30,7 @@ class _DUState extends State<DU> {
           ),
 
           body: Center(
-            child: Text("Date:5th October 2023 \n Venue: Village Ground  \n Time: 9:30 PM",style: TextStyle(
+            child: Text("Date: 5th October 2023 \nVenue: Village Ground  \nTime: 9:30 PM",style: TextStyle(
               fontSize: 20, fontWeight: FontWeight.bold,),
             ),
           )

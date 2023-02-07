@@ -1,0 +1,15 @@
+{
+"homePage": "Home Page",
+"villageManagementSystem": "Village Management System",
+"personalInformation": "Personal Information",
+"name": "Name",
+"nameHint": "Enter your name",
+"email": "Email",
+"emailHint": "Enter your email",
+"dateOfBirth": "Date of Birth",
+"requiredField": "Required Field",
+"submitInfo": "Submit Info",
+"aboutUs": "About Us",
+"settings": "Settings",
+"changeLanguage": "Change Language"
+}
